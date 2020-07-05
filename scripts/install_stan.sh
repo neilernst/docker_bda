@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-apt-get -y install apt-utils libnode-dev \
+apt-get -y install apt-utils libnode-dev libxt6 \
 && install2.r --error --skipinstalled \
     brms \
     rstanarm \
