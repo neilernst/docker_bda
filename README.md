@@ -1,5 +1,7 @@
 # Dockerfile for Stan
 
+This Docker file can be used to build a Docker image containing Stan <http://mc-stan.org> with some accompanying packages.
+
 If you want to create the Docker image locally then clone this directory and run `bash docker build --tag bda:1.0 .` Then you've created an image `bda` tagged as `1.0`. You can also choose to run it as-is from your terminal directly (curtesy of <http://hub.docker.com>),
 
 ```{bash}
@@ -8,22 +10,23 @@ docker run -d -p 8787:8787 -e PASSWORD=foo torkar/docker_bda
 
 Password above is set to `foo`, and then point your browser to <http://localhost:8787> and use `rstudio` as your username.
 
+***
+
 Note to self: If you want to adapt this repository for publishing a replication package:
 
 1. Clone the repository.
 2. Create a new branch with an appropriate name, `git checkout -b affective_states`.
 3. Make changes in that branch's `scripts/install_repl.sh`, and commit the changes.
-4. In the original repo, e.g., `torkar/affective_states`,
+4. Push branch `git push -u origin affective_states`.
+5. In the original repo, e.g., `torkar/affective_states`,
     1. `git submodule add -b affective_states https://github.com/torkar/docker_bda.git`, to add a submodule.
     2. `git submodule update --init`, to initialize the submodule and fetch the code.
     3. `ln -s docker_bda/Docker Docker`, to create a link `Docker` in `/` pointing to the `Docker` file in `docker_bda`.
-    4. `ln -s docker_bda/scripts scripts`, to create a link `scripts`, which points to the directory `docker_bda/scripts`. 
+    4. `ln -s docker_bda/scripts scripts`, to create a link `scripts`, which points to the directory `docker_bda/scripts`.
 
-With the last two steps <http://hub.docker.com> will find the `Docker` file and `scripts/` directory in the root directory and, thus, should be able to push it through its autoamted builds system.
+With the last two steps <http://hub.docker.com> will find the `Docker` file and `scripts/` directory in the root directory and, thus, should be able to push it through its automated builds system.
 
 ***
-
-This Docker file can be used to build a Docker image containing Stan <http://mc-stan.org> with some accompanying packages.
 
 The image makes use of the excellent `rocker/rstudio` image as a base. Then we use `install_stan.sh` to install some packages in Ubuntu, i.e., `apt-utils` and `libnode-dev`. Then we install `rstan` and other packages.
 
