@@ -20,5 +20,6 @@ apt-get -y install apt-utils libnode-dev \
     V8 \
     projpred \
     shape \
+    bookdown \
 && installGithub.r rmcelreath/rethinking \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
