@@ -7,7 +7,3 @@ mkdir -p /home/rstudio/.R/ \
     && echo "CXXFLAGS += -Wno-ignored-attributes -Wno-deprecated-declarations" >> /home/rstudio/.R/Makevars \
     && echo "rstan::rstan_options(auto_write = TRUE)" >> /home/rstudio/.Rprofile \
     && echo "options(mc.cores = parallel::detectCores())" >> /home/rstudio/.Rprofile
-
-# If you want to make sure that the Docker image downloads a certain repository
-# mkdir -p /home/rstudio/development \
-#    && git clone https://github.com/torkar/affective_states.git
