@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/224837204.svg)](https://zenodo.org/badge/latestdoi/224837204)
+[![DOI](https://zenodo.org/badge/277138015.svg)](https://zenodo.org/badge/latestdoi/277138015)
 
 # Dockerfile for Stan
 
