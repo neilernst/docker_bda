@@ -1,10 +1,18 @@
 # Dockerfile for Stan
 
-If you want to create the Docker image locally then clone this directory and then run `bash docker build --tag bda:1.0 .` Then you've created an image `bda` tagged as `1.0`.
+If you want to create the Docker image locally then clone this directory and run `bash docker build --tag bda:1.0 .` Then you've created an image `bda` tagged as `1.0`. You can also choose to run it as-is from your terminal directly (curtesy of <http://hub.docker.com>),
+
+```{bash}
+docker run -d -p 8787:8787 -e PASSWORD=foo torkar/docker_bda
+```
+
+Password above is set to `foo`, and then point your browser to <http://localhost:8787> and use `rstudio` as your username.
+
+***
 
 This Docker file can be used to build a Docker image containing Stan <http://mc-stan.org> with some accompanying packages.
 
-The image makes use of the excellent rocker/rstudio image as a base. Then we use `install_stan.sh` to install some packages in Ubuntu, i.e., `apt-utils` and `libnode-dev`. Then we install `rstan` and other packages.
+The image makes use of the excellent `rocker/rstudio` image as a base. Then we use `install_stan.sh` to install some packages in Ubuntu, i.e., `apt-utils` and `libnode-dev`. Then we install `rstan` and other packages.
 
 Finally, we use `install_env.sh` to set up the environment for the `rstudio` user. We make sure to create the file `/home/rstudio/.R/Makevars` containing the following lines,
 
