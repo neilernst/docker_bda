@@ -6,7 +6,7 @@ This Docker file can be used to build a Docker image containing Stan <http://mc-
 
 ## Run via <http://hub.docker.com>
 
-You can now choose to run the latest version as-is from <http://hub.docker.com> in your terminal directly,
+You can choose to run the latest version as-is from <http://hub.docker.com> in your terminal directly,
 
 ```{bash}
 docker run -d -p 8787:8787 -e PASSWORD=foo -e ROOT=TRUE torkar/docker_bda
