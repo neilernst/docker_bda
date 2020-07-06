@@ -20,15 +20,15 @@ If you want to adapt this repository for publishing a replication package throug
 
 1. [Fork this repository](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#fork-an-example-repository) on GitHub.
 2. Go to <http://hub.docker.com> and [add the repository](https://docs.docker.com/docker-hub/repos/).
-3. Clone the pository to your computer and create a new branch with an appropriate name, e.g., `git checkout -b affective_states`. (Do this for every paper/project you want to have a replication package for.)
+3. Clone the repository to your computer and create a new branch with an appropriate name, e.g., `git checkout -b affective_states`. (Do this for every paper/project you want to have a replication package for.)
 4. Make changes in that branch's `scripts/install_repl.sh`, commit the changes, and push the branch, e.g., `git push -u origin affective_states`.
-6. Set up automated builds for the repository (please see [[Set up automated builds]](https://docs.docker.com/docker-hub/builds/)).
+6. Set up automated builds for the repository (please see [[Set up automated builds]](https://docs.docker.com/docker-hub/builds/)). Make sure to point to your branch, and not `master`, and tag the build with a sane keyword.
 
-With the last step <http://hub.docker.com> will find the `Docker` file and `scripts/` directory in the root directory of the branch and, thus, should be able to push it through its automated builds system (make sure that you add the name of the *branch*).
+With the last step <http://hub.docker.com> will find the `Docker` file and `scripts/` directory in the branch and, thus, should be able to push it through its automated builds system.
 
 ## Background
 
-The image makes use of the excellent `rocker/rstudio` image as a base (see [Rocker](https://hub.docker.com/r/rocker/rstudio/)). Then we use `install_stan.sh` to install some packages in Ubuntu, e.g., `libnode-dev` and `libxml2-dev`, and we install `rstan` and other packages.
+The image makes use of the excellent `rocker/rstudio` image (see [Rocker](https://hub.docker.com/r/rocker/rstudio/)). Then we use `install_stan.sh` to install some packages in Ubuntu, e.g., `libnode-dev` and `libxml2-dev`, and we install `rstan` and other packages.
 
 We then use `install_env.sh` to set up the environment for the `rstudio` user. We make sure to create the file `/home/rstudio/.R/Makevars` containing the following lines,
 
