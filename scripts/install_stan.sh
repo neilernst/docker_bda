@@ -22,5 +22,8 @@ apt-get -y install apt-utils libnode-dev libxt6 libxml2-dev libglpk-dev\
     shape \
     bookdown \
     BH \
+    kableExtra \
+    tufte \
+    openxlsx \
 && installGithub.r rmcelreath/rethinking \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
