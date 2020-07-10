@@ -22,9 +22,9 @@ If you want to adapt this repository for publishing a replication package throug
 2. Go to <http://hub.docker.com> and [add the repository](https://docs.docker.com/docker-hub/repos/).
 3. Clone the repository to your computer and create a new branch with an appropriate name, e.g., `git checkout -b affective_states`. (Do this for every paper/project you want to have a replication package for.)
 4. Make changes in that branch's `scripts/install_repl.sh`, commit the changes, and push the branch, e.g., `git push -u origin affective_states`.
-6. Set up automated builds for the repository (please see [[Set up automated builds]](https://docs.docker.com/docker-hub/builds/)). Make sure to point to your branch, and not `master`, and tag the build with a sane keyword.
+6. Set up automated builds for the repository (please see [[Set up automated builds]](https://docs.docker.com/docker-hub/builds/)). Make sure to point to your branch, and not `master`, and tag the build with a sane keyword. Also, make sure to turn off `Build caching` since we're pulling things from GitHub.
 
-With the last step <http://hub.docker.com> will find the `Docker` file and `scripts/` directory in the branch and, thus, should be able to push it through its automated builds system.
+With the last step <http://hub.docker.com> will find the `Docker` file and `scripts/` directory in the branch and, thus, should be able to push it through its automated builds system. If you change things in this repository it will automatically build a new image for you. However, any changes in your repository, containing the replication package, will go unnoticed, i.e., if you want the image to pull from GitHub and rebuild you need to simply trigger a new build.
 
 ## Background
 
