@@ -7,6 +7,7 @@ COPY scripts /rocker_scripts
 # install rstan etc.
 RUN /rocker_scripts/install_stan.sh
 
+RUN R -e "remotes::install_github('stan-dev/rstantools')"
 RUN R -e "remotes::install_github('paul-buerkner/brms')"
 
 # configure 
