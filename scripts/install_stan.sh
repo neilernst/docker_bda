@@ -25,5 +25,6 @@ apt-get -y install apt-utils libnode-dev libxt6 libxml2-dev libglpk-dev\
     tufte \
     openxlsx \
     remotes \
+    synthpop \
 && installGithub.r rmcelreath/rethinking \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
