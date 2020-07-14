@@ -35,7 +35,7 @@ We then use `install_env.sh` to set up the environment for the `rstudio` user. W
 ```{bash}
 CXXFLAGS=-O3 -mtune=native -march=native -Wno-unused-variable -Wno-unused-function -Wno-macro-redefined
 CXXFLAGS+=-flto -Wno-unused-local-typedefs
-CXXFLAGS += -Wno-ignored-attributes -Wno-deprecated-declarations
+CXXFLAGS+=-Wno-ignored-attributes -Wno-deprecated-declarations
 ```
 
 and the file `/home/rstudio/.Rprofile`containing the following lines,
