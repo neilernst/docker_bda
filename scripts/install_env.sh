@@ -6,4 +6,6 @@ mkdir -p /home/rstudio/.R/ \
     && echo "CXXFLAGS+=-flto -Wno-unused-local-typedefs" >> /home/rstudio/.R/Makevars \
     && echo "CXXFLAGS += -Wno-ignored-attributes -Wno-deprecated-declarations" >> /home/rstudio/.R/Makevars \
     && echo "rstan::rstan_options(auto_write = TRUE)" >> /home/rstudio/.Rprofile \
-    && echo "options(mc.cores = parallel::detectCores())" >> /home/rstudio/.Rprofile
+    && echo "options(mc.cores = parallel::detectCores())" >> /home/rstudio/.Rprofile \
+    && echo "options(brms.backend='cmdstanr')" >> /home/rstudio/.Rprofile \
+    && echo "options(mc.cores=4)" >> /home/rstudio/.Rprofile
