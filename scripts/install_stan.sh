@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
 
-apt update \
-&& apt install nodejs\
+apt-get update \
+&& apt-get install -y --no-install-recommends \
+libnode64 \
+&& rm -rf /var/lib/apt/lists/* \
 && install2.r --error --skipinstalled \
     rstanarm \
     tidybayes \
