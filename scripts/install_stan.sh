@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-apt-get -y install libnode-dev libxml2-dev libglpk-dev\
+apt-get -y install \
 && install2.r --error --skipinstalled \
     rstanarm \
     tidybayes \
