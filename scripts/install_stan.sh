@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-apt-get -y install libnode64\
+apt-get -y install nodejs\
 && install2.r --error --skipinstalled \
     rstanarm \
     tidybayes \
