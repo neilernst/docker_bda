@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 
-apt-get -y install nodejs\
+apt update \
+&& apt install nodejs\
 && install2.r --error --skipinstalled \
     rstanarm \
     tidybayes \
