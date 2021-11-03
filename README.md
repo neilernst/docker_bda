@@ -22,13 +22,13 @@ If you want to adapt this repository for publishing a replication package throug
 2. Go to <http://hub.docker.com> and [add the repository](https://docs.docker.com/docker-hub/repos/).
 3. Clone the repository to your computer and create a new branch with an appropriate name, e.g., `git checkout -b affective_states`. (Do this for every paper/project you want to have a replication package for.)
 4. Make changes in that branch's `scripts/install_repl.sh`, commit the changes, and push the branch, e.g., `git push -u origin affective_states`.
-6. Set up automated builds for the repository (please see [[Set up automated builds]](https://docs.docker.com/docker-hub/builds/)). Make sure to point to your branch, and not `master`, and tag the build with a sane keyword. Also, make sure to turn off `Build caching` since we're pulling things from GitHub.
+5. Set up automated builds for the repository (please see [[Set up automated builds]](https://docs.docker.com/docker-hub/builds/)). Make sure to point to your branch, and not `master`, and tag the build with a sane keyword. Also, make sure to turn off `Build caching` since we're pulling things from GitHub.
 
-With the last step <http://hub.docker.com> will find the `Docker` file and `scripts/` directory in the branch and, thus, should be able to push it through its automated builds system. If you change things in this repository it will automatically build a new image for you. However, any changes in your repository, containing the replication package, will go unnoticed, i.e., if you want the image to pull from GitHub and rebuild you need to simply trigger a new build.
+With the last step <http://hub.docker.com> will find the `Dockerfile` and `scripts/` directory in the branch and, thus, push it through its automated build system. If you change things in this repository it will automatically build a new image for you. However, any changes in your repository, containing the replication package, will go unnoticed, i.e., if you want the image to pull from GitHub and rebuild you need to simply trigger a new build.
 
 ## Background
 
-The image makes use of the excellent `rocker/rstudio` image (see [Rocker](https://hub.docker.com/r/rocker/rstudio/)). Then we use `install_stan.sh` to install some packages in Ubuntu, e.g., `libnode-dev` and `libxml2-dev`, and we install `rstan` and other packages.
+The image makes use of the excellent `rocker/rstudio` image (see [Rocker](https://hub.docker.com/r/rocker/rstudio/)). Then we use `install_stan.sh` to install some packages in Ubuntu, e.g., `libv8-dev`, and we install `rstan`, `rethinking`, and many other packages. Finally, we also install `cmdstanr` and then download and compile the latest release of `cmdstan`. We make sure to set `cmdstanr` as the backend for, e.g., `brms`.
 
 We then use `install_env.sh` to set up the environment for the `rstudio` user. We make sure to create the file `/home/rstudio/.R/Makevars` containing the following lines,
 
@@ -38,11 +38,14 @@ CXXFLAGS+=-flto -Wno-unused-local-typedefs
 CXXFLAGS+=-Wno-ignored-attributes -Wno-deprecated-declarations
 ```
 
-and the file `/home/rstudio/.Rprofile`containing the following lines,
+and the file `/home/rstudio/.Rprofile` containing the following lines,
 
 ```{bash}
 rstan::rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
+options(brms.backend='cmdstanr')
 ```
+
+If one wants to run `rethinking` with `cmdstan` then append `cmdstan=TRUE` to the `ulam()` code.
 
 Finally, `scripts/install_repl.sh` allows you to add a command that will clone a GitHub repository (which should contain your replication package).
