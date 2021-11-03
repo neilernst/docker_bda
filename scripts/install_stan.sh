@@ -3,7 +3,7 @@ set -e
 
 apt-get update \
 && apt-get install -y --no-install-recommends \
-libnode64 \
+libv8-dev \
 && rm -rf /var/lib/apt/lists/* \
 && install2.r --error --skipinstalled \
     rstanarm \
