@@ -7,6 +7,7 @@ libv8-dev \
 && rm -rf /var/lib/apt/lists/* \
 && install2.r --error --skipinstalled \
     rstanarm \
+    brms \
     tidybayes \
     blavaan \
     coda \
