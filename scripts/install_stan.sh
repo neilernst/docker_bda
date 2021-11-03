@@ -3,7 +3,7 @@ set -e
 
 apt-get update \
 && apt-get install -y --no-install-recommends \
-libv8-dev \
+libv8-dev libxt6 libxml2-dev libglpk-dev\
 && rm -rf /var/lib/apt/lists/* \
 && install2.r --error --skipinstalled \
     rstanarm \
