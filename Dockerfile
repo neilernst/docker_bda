@@ -1,6 +1,6 @@
 FROM rocker/rstudio
 
-LABEL maintainer="Richard Torkar <richard.torkar@gmail.com>"
+LABEL maintainer="Neil Ernst <neil.ernst@gmail.com>"
 
 COPY scripts /rocker_scripts
 
