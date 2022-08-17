@@ -15,6 +15,8 @@ USER rstudio
 
 RUN R -e "install.packages('cmdstanr', repos = c('https://mc-stan.org/r-packages/', getOption('repos')))"
 RUN R -e "cmdstanr::install_cmdstan()"
+RUN R -e "install.packages(c('coda','mvtnorm','devtools','loo','dagitty','shape'))"
+RUN R -e "devtools::install_github('rmcelreath/rethinking')"
 
 # d/l any repos needed
 RUN /rocker_scripts/install_repl.sh

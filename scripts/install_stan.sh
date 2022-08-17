@@ -8,6 +8,7 @@ libv8-dev libxt6 libxml2-dev libglpk-dev\
 && install2.r --error --skipinstalled \
     rstanarm \
     brms \
+    corrplot \
     tidybayes \
     blavaan \
     coda \
@@ -30,5 +31,4 @@ libv8-dev libxt6 libxml2-dev libglpk-dev\
     openxlsx \
     remotes \
     synthpop \
-&& installGithub.r rmcelreath/rethinking \
 && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
